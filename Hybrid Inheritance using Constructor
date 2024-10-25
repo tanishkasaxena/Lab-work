@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+class Vehical
+{
+protected:
+    string make;
+    int year;
+
+public:
+    Vehical(string make, int year)
+    {
+        this->make = make;
+        this->year = year;
+    }
+
+    void displayinfo()
+    {
+        cout << "The information of the Vehical is as following." << endl;
+        cout << "Manufacturer of the Vehical is: " << make << endl;
+        cout << "Year of manufature: " << year << endl;
+    }
+};
+
+class Car : public Vehical
+{
+protected:
+    int numberOfDoors;
+
+public:
+    Car(int numberOfDoors, string make, int year) : Vehical(make, year)
+    {
+        this->numberOfDoors = numberOfDoors;
+    }
+    void displaydetails()
+    {   
+        displayinfo();
+        cout << "The number of doors in car are: " << numberOfDoors;
+    }
+};
+
+class Bike : public Vehical
+{
+protected:
+    string type;
+
+public:
+    Bike(string type, string make, int year): Vehical(make,year)
+    {
+        this->type = type;
+    }
+    void displaydetails()
+    {
+        displayinfo();
+        cout << "The type of bike is: " << type << endl;
+    }
+};
+
+
+int main()
+{
+    Car c1( 4 , "BMW", 2004);
+    Bike b1("sports" , "bmw" , 2008);
+    c1.displaydetails();
+    b1.displaydetails();
+
+    return 0;
+}

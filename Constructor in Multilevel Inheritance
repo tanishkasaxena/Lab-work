@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+
+class Item{
+    protected:
+    string title;
+    int year;
+
+    public:
+
+    Item(string title, int year){
+        this-> title = title;
+        this-> year = year;
+    }
+
+    void display(){
+        cout<<"The title of the book is: "<<title << endl;
+        cout<<"the year of the book is: "<< year << endl;
+    }
+
+};
+
+class Book : public Item{
+    protected:
+    string author;
+
+    public:
+    Book(string author, string title, int year): Item(title , year){
+        this->author = author;
+    }
+
+    void displaydetails()
+    {
+        display();
+        cout<<" the author of the book is: "<< author<< endl;
+    }
+
+};
+
+class ReferenceBook : public Book{
+    protected:
+    string subject;
+
+    public:
+
+    ReferenceBook(string subject, string author, string title, int year): Book(author, title, year){
+        this -> subject = subject;
+    }
+
+    void displaydetail()
+    {
+        displaydetails();
+        cout<< " the subject of the book is: "<<subject << endl;
+    }
+
+};
+
+int main(){
+    ReferenceBook book("Physics", "HC Verma", "Concept of Physics", 1998);
+    book.displaydetail();
+
+    return 0;
+}
